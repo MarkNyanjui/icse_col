@@ -143,10 +143,11 @@ while (i <= 13) { // Loop condition: continue as long as i is less than or equal
 }
 // Do-while loop
 document.write("<h4>Do-While Loop</h4>");
-let j = 1; // Initialize the loop variable
+let j = 5; // Initialize the loop variable
 do {
+    // if (j == 9){ continue; } // Skip the iteration when j is 9
     document.write(j + "<br>"); // Output the current value of j followed by a line break
-    j+=2; // Increment the loop variable by 2
+    j++; // Increment the loop variable by 2
 } while (j <= 13); // Loop condition: continue as long as j is less than or equal to 13
 
 // For loop
@@ -179,12 +180,16 @@ for (let detail in user) {
 <br>
 <script>
 let TimeDate = new Date();
+
 </script>
-<h4>Select Date of Birth</h4>
+<h4>Registration Date</h4>
 <select name="" id="">
     <script>
             document.write("<option value=''>"+ TimeDate.getDate() +"</option>");
-        for (let day = 1; day <= 31; day++) {
+        for (let day = 1; day <= daysInMonth(TimeDate); day++) {
+            if (day === TimeDate.getDate()) {
+                continue; // Skip the current day
+            }
             document.write("<option value='" + day + "'>" + day + "</option>");
         }
     </script>
@@ -194,6 +199,9 @@ let TimeDate = new Date();
         let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         document.write("<option value=''>" + months[TimeDate.getMonth()] + "</option>");
         for (let month of months) {
+            if (month === months[TimeDate.getMonth()]) {
+                continue; // Skip the current month
+            }
             document.write("<option value='" + month + "'>" + month + "</option>");
         }
     </script>
@@ -203,6 +211,9 @@ let TimeDate = new Date();
         document.write("<option value=''>" + TimeDate.getFullYear() + "</option>");
         let minYear = TimeDate.getFullYear() - 50; // Set minimum year to 50 years ago
         for (let year = TimeDate.getFullYear(); year >= minYear; year--) {
+            if (year === TimeDate.getFullYear()) {
+                continue; // Skip the current year
+            }
             document.write("<option value='" + year + "'>" + year + "</option>");
         }
     </script>
