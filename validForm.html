@@ -127,6 +127,28 @@
             isValid = false;
         }
 
+        // Password validation
+        const password = document.getElementById("password").value.trim();
+        if(password === ''){ // Check if the password is empty
+            document.getElementById("passwordError").textContent = 'Password is required.';
+            isValid = false;
+        }else if(password.length < 6){ // Check if the password is too short
+            document.getElementById("passwordError").textContent = 'Password must be at least 6 characters long.';
+            isValid = false;
+        }else if(!/[A-Z]/.test(password)){ // Check if the password contains at least one uppercase letter
+            document.getElementById("passwordError").textContent = 'Password must contain at least one uppercase letter.';
+            isValid = false;
+        }else if(!/[a-z]/.test(password)){ // Check if the password contains at least one lowercase letter
+            document.getElementById("passwordError").textContent = 'Password must contain at least one lowercase letter.';
+            isValid = false;
+        }else if(!/[0-9]/.test(password)){ // Check if the password contains at least one digit
+            document.getElementById("passwordError").textContent = 'Password must contain at least one digit.';
+            isValid = false;
+        }else if(!/[!@#$%^&*(),.?":{}|+\-<>]/.test(password)){ // Check if the password contains at least one special character
+            document.getElementById("passwordError").textContent = 'Password must contain at least one special character.';
+            isValid = false;
+        }
+
       if(isValid){
           document.getElementById("validationMessage").textContent = 'Form submitted successfully!';
           document.getElementById("validationMessage").classList.remove('error');
