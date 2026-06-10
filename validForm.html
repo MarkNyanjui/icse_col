@@ -38,17 +38,17 @@
     <h2>Registration Form</h2>
     <div class="field">
         <label for="fullname">Full Name: </label><br>
-        <input type="text" id="fullname" name="fullname" autofocus><br>
+        <input type="text" id="fullname" name="fullname" autofocus maxlength="60"><br>
         <p id="fullnameError" class="error"></p>
     </div>
     <div class="field">
         <label for="email">Email: </label><br>
-        <input type="email" id="email" name="email"><br>
+        <input type="email" id="email" name="email" maxlength="60"><br>
         <p id="emailError" class="error"></p>
     </div>
     <div class="field">
         <label for="phone">Phone Number: </label><br>
-        <input type="tel" id="phone" name="phone"><br>
+        <input type="tel" id="phone" name="phone" maxlength="15"><br>
         <p id="phoneError" class="error"></p>
     </div>
     <div class="field">
@@ -99,6 +99,7 @@
       // Validate Email
       const email = document.getElementById("email").value.trim();
       const validDomains = ['gmail.com', 'yahoo.com', 'strathmore.edu', 'o365.strathmore.edu']; // List of valid domains
+      const invalidDomains = ['hotmail.com', 'outlook.com', 'aol.com']; // List of invalid domains
       const emailDomain = email.split('@')[1]; // Get the domain part of the email
 
       if(email === ''){ // Check if the email is empty
@@ -110,7 +111,21 @@
       }else if(!validDomains.includes(emailDomain)){ // Check if the email domain is valid
           document.getElementById("emailError").textContent = 'Email domain must be one of the following: ' + validDomains.join(', ') + '.';
           isValid = false;
+      }else if(invalidDomains.includes(emailDomain)){ // Check if the email domain is invalid
+          document.getElementById("emailError").textContent = 'Email domain ' + emailDomain + ' is not allowed.';
+          isValid = false;
       }
+
+      // Validate Phone Number
+      const phone = document.getElementById("phone").value.trim();
+      const validPhonePattern = /^\+?\d{10,15}$/; // Regular expression for a valid phone number (10-15 digits, optional + at the beginning)
+        if(phone === ''){ // Check if the phone number is empty
+            document.getElementById("phoneError").textContent = 'Phone Number is required.';
+            isValid = false;
+        }else if(!validPhonePattern.test(phone)){ // Check if the phone number is valid (10-15 digits)
+            document.getElementById("phoneError").textContent = 'Phone Number must be between 10 and 15 digits.';
+            isValid = false;
+        }
 
       if(isValid){
           document.getElementById("validationMessage").textContent = 'Form submitted successfully!';
