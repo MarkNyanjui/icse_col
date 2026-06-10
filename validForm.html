@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .registration-form{
+            width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .field{
+            margin-bottom: 15px;
+        }
+        input, button{
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            font-size: 1.6em;
+            font-family: Arial, sans-serif;
+        }
+        .error{
+            color: #f70202;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<form action="" method="" id="registrationForm" class="registration-form">
+    <h2>Registration Form</h2>
+    <div class="field">
+        <label for="fullname">Full Name: </label><br>
+        <input type="text" id="fullname" name="fullname" autofocus><br>
+    </div>
+    <div class="field">
+        <label for="email">Email: </label><br>
+        <input type="email" id="email" name="email"><br>
+    </div>
+    <div class="field">
+        <label for="phone">Phone Number: </label><br>
+        <input type="tel" id="phone" name="phone"><br>
+    </div>
+    <div class="field">
+        <label for="password">Password: </label><br>
+        <input type="password" id="password" name="password"><br>
+    </div>
+    <div class="field">
+        <label for="confirm_password">Confirm Password: </label><br>
+        <input type="password" id="confirm_password" name="confirm_password"><br>
+    </div>
+    <div class="field">
+        <button type="submit">Register</button>
+    </div>
+</form>
+</body>
+</html>
